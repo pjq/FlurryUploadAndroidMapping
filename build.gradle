@@ -1,0 +1,37 @@
+group 'me.pjq'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+}
+dependencies {
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile 'com.flurry:proguard-upload:1.1.0'
+    compile 'org.json:json:20160810'
+    compile 'org.apache.httpcomponents:httpclient:4.5.1'
+    compile 'org.apache.commons:commons-compress:1.12'
+    compile 'net.sourceforge.argparse4j:argparse4j:0.7.0'
+    compile 'org.slf4j:slf4j-simple:1.7.21'
+}
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Upload Android Mapping file',
+                'Implementation-Version': version,
+                'Main-Class': 'me.pjq.flurry.FlurryMappingUploadTools'
+    }
+//    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
