@@ -8,7 +8,7 @@ So I build the tool to support mannually upload the mapping file, it refer
 
 
 ##### How to use
-Before upload the mapping file, you need update your `APK_KEY` and `TOKEN` in the file `bin/flurry.config`
+Before upload the mapping file, you need prepare your flurry.config`
 
 ```
 API_KEY=XXXXXXXX
@@ -16,26 +16,26 @@ TOKEN=XXXXXXXXXXXXXXX
 TIMEOUT=60000
 ```
 
+###### How to build
 ```
 cd bin
 ./build.sh
 
 ```
 
+###### How to upload 
 ```
 cd bin
-./upload.sh mapping.txt
-
+./upload.sh flurry.config mapping.txt uuid
 ```
-
 ```
-./upload.sh mapping.txt     
-Upload Android Mapping file mapping.txt 
-upload mapping: mapping.txt
-[main] INFO com.flurry.proguard.UploadMapping - Found project 16580x for api key T6XAETCZD1PL62L4S3YX
-[main] INFO com.flurry.proguard.UploadMapping - Created upload with ID: 20096
+/upload.sh flurry.config mapping-1807.txt asdfa24 
+Usage: ./upload.sh flurry.config mapping.txt uuid
+Upload Android Mapping file ./upload.sh flurry.config mapping-1807.txt asdfa24
+FlurryMappingUploadTool: mappingFile: mapping-1807.txt flurryConfig: flurry.config uuid:asdfa24
+FlurryMappingUploadTool: upload mapping: mapping-1807.txt uuid: asdfa24 API_KEY:XXXXXXX TOKEN:XXXXXXX
+[main] INFO com.flurry.proguard.UploadMapping - Found project xxxxx for api key XXXXXXX 
+[main] INFO com.flurry.proguard.UploadMapping - Created upload with ID: XXXXXX 
 [main] INFO com.flurry.proguard.UploadMapping - ProGuard mapping uploaded to Flurry
-[main] INFO com.flurry.proguard.UploadMapping - Upload completed successfully!
-
 ```
 
